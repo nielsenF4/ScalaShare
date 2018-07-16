@@ -1,4 +1,4 @@
-package com.nielsen.hello
+package com.nielsen.clark
 
 class NumJewelsInStones {
 
