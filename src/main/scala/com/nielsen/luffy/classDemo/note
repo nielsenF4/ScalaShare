@@ -1,0 +1,61 @@
+1.辅助构造器
+   1个主构造器
+   n个辅助构造器
+
+class Human {
+
+  private var name = ""
+  private var age = 0
+
+  def this(name : String){
+    this()
+    this.name = name
+  }
+
+  def this(name : String , age : Int){
+    this(name)
+    this.age = age
+  }
+}
+
+辅构造器的参数一定比主构造器多
+
+2.主构造器
+	主构造器不以 this 方法定义，是和类定义在一起
+	类的参数就是主构造器的参数
+	class Teacher(var name:String,var sex: String){} 那么构造器的参数就是name和sex，并且初始化了这两个字段
+	这种情况下，主构造器执行的时候会执行类中的所有不包含在方法体中的语句
+
+
+	class Teacher( name:String, sex: String){} 这个时候name 和sex 仅仅只是参数，
+	但是如果被类中方法调用的时候，则会变成私有的字段，但是有共有的getter/setter方法。
+	要是想有私有的getter/setter
+	class Teacher(private var name:String , private var sex: String){}
+
+Q:为什么要分主构造器和副构造器
+
+被调用的构造器既可以是主构造器，也可以是从文本上来看早于调用构造器的其它从构造器。
+这个规则的根本结果就是每一个Scala的构造器调用终将结束于对类的主构造器的调用。因此主构造器是类的唯一入口点
+
+
+3.嵌套类
+import scala.collection.mutable.ArrayBuffer
+
+/**
+  * Created by lulu7001 on 2018/7/12.
+  */
+class Network {
+
+  class Member(val name:String){
+    val contacts = new ArrayBuffer[Member]
+  }
+
+  private  val members = new ArrayBuffer[Member]
+
+
+  def join(name:String)={
+    val m = new Member(name)
+    members += m
+    m
+  }
+}
