@@ -59,3 +59,20 @@ class Network {
     m
   }
 }
+
+		val chatter = new Network
+		val myFace = new Network
+
+在scala中，每个实例都有他自己的Member类，就和他们有自己的members字段一样，
+也就是说，chatter.Member和myFace.Member是不同的两个类
+
+java中的内部类从属于外部类
+java的内部类: 成员内部类
+            局部内部类
+            匿名内部类
+            静态内部类
+
+外部类class - 内部类class
+外部类class - 内部对象object
+外部对象object - 内部类class
+外部对象object - 内部对象object

@@ -17,11 +17,30 @@ object Test {
 		 val student2 = new Student("clark");
 		 println(student2.name)*/
 
-		val teacher = new Teacher("Albert", "man", 11);
+		//val teacher = new Teacher("Albert", "man", 11);
 
 		//val teacher2   = new Teacher("Clark");
 		//      teacher.name="Albert Sun";
-		teacher.test
+		//teacher.test
+
+
+
+		val chatter = new Network
+		val myFace = new Network
+		val a = chatter.join("Fred")
+		val b = chatter.join("Wilma")
+		a.contacts += b
+		val c = myFace.join("Barney")
+		//a.contacts+=c
+
+		val aaa = new chatter.Member("111")
+
+		aaa.contacts.foreach(println)
+
+		(chatter.getMembers.map(_.name)).foreach(println)
+
+
+
 
 
 	}
