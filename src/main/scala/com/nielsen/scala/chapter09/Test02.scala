@@ -3,12 +3,10 @@ package com.nielsen.scala.chapter09
 object Test02 {
   def main(args: Array[String]): Unit = {
     println("test................")
-
-    //    val engine = new V8Engine
-    //    engine.start
-    //    engine.stop
-
-    val car = new Car
+    val engine = new V8Engine
+    val chassis = new PSAChassis
+    val gearbox = new ZFGearbox
+    val car = new Car(engine, chassis, gearbox)
     car.start()
     car.shift()
     car.driving()
@@ -75,18 +73,13 @@ trait GearboxComponent {
   val gearbox: Gearbox
 }
 
-class Car extends EngineComponent with Engine with ChassisComponent with Chassis with GearboxComponent with Gearbox {
-  val engine = new V8Engine
-  val chassis = new PSAChassis
-  val gearbox = new ZFGearbox
-
-  def start = engine.start _
-  def stop = engine.stop _
-  def braking = chassis.braking _
-  def driving = chassis.driving _
-  def turning = chassis.turning _
-  def shift = gearbox.shift _
-
+class Car(val engine: Engine, val chassis: Chassis, val gearbox: Gearbox) extends EngineComponent with Engine with ChassisComponent with Chassis with GearboxComponent with Gearbox {
+  def start = engine.start
+  def stop = engine.stop
+  def braking = chassis.braking
+  def driving = chassis.driving
+  def turning = chassis.turning
+  def shift = gearbox.shift
 }
 
 
