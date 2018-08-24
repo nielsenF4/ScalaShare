@@ -1,0 +1,31 @@
+闭包是一个函数，返回值依赖于声明在函数外部的一个或多个变量。
+闭包通常来讲可以简单的认为是可以访问一个函数里面局部变量的另外一个函数。
+val multiplier = (i:Int) => i * 10  
+
+函数体内有一个变量 i，它作为函数的一个参数。如下面的另一段代码：
+val multiplier = (i:Int) => i * factor
+在 multiplier 中有两个变量：i 和 factor。其中的一个 i 是函数的形式参数，在 multiplier 函数被调用时，i 被赋予一个新的值。然而，factor不是形式参数，而是自由变量，考虑下面代码：
+var factor = 3  
+val multiplier = (i:Int) => i * factor  
+这里我们引入一个自由变量 factor，这个变量定义在函数外面。
+这样定义的函数变量 multiplier 成为一个"闭包"，因为它引用到函数外面定义的变量，定义这个函数的过程是将这个自由变量捕获而构成一个封闭的函数。
+定义：
+object Test {  
+   def main(args: Array[String]) {  
+      println( "muliplier(1) value = " +  multiplier(1) )  
+      println( "muliplier(2) value = " +  multiplier(2) )  
+   }  
+   var factor = 3  
+   val multiplier = (i:Int) => i * factor  
+}  
+
+闭包有三个特性：
+1.函数嵌套函数；
+2.函数内部可以引用外部的参数和变量
+3.参数和变量不会被垃圾回收机制回收
+
+
+闭包都可以通过参数传送和回调函数搞定，从闭包的概念和特性推测，我认为区别如下：
+1）闭包更强调的是自由变量的域，回调函数更强调的是函数
+2）闭包更适合“包”内过程与上下文联系，回调函数更关注返回的结果
+3）闭包是一个同步的过程处理，有种“你不告诉变量，我做不下去”的感觉；回调函数是一个异步操作，有种"你先干你的，做好了通知你"的感觉
