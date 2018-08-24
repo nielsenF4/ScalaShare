@@ -1,0 +1,28 @@
+提前定义：
+
+定义 ： 提前定义语法可以让你在超类的构造器执行之前初始化子类的val字段。
+
+步骤： 1. Ant的构造器在做他的构造之前，调用 Creature 的构造器
+2. Creature 的构造器他的 range设为10
+3. Creature 的构造器为了初始化env数组，调用range()取值器
+4. 改方法被重写以输出（还未初始化的） Ant类的range字段值
+5. range方法返回0
+6. env被设为长度为0的数组
+7. Ant 构造器继续执行，将其range字段设为2
+
+class Creature {
+
+val range: Int = 10
+val env : Array[Int] = new Array[Int](range)
+}
+
+class Ant extends Creature {
+
+override val range = 2
+
+}
+
+class Ant extends{
+override val range = 2
+} with Creature
+...
