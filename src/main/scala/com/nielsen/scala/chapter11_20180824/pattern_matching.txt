@@ -1,0 +1,5 @@
+case _ : 等效 default， 避免抛出MatchError
+
+守卫 ： 是任何的Boolean条件
+
+特殊符号和小写常量可以使用反引号
